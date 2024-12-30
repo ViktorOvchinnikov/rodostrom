@@ -9,7 +9,7 @@ const generateRandomPeople = (count) => {
   const arr = [
     {
       name: "Ján",
-      surname: "Sokol",
+      surname: "Minulý",
       role: "Šľachtic",
       gender: "male",
       matrial_status: "Ženatý/Vydatá, 2 deti",
@@ -20,7 +20,7 @@ const generateRandomPeople = (count) => {
     },
     {
       name: "Ján",
-      surname: "Sokol",
+      surname: "Minulý",
       role: "Krajčír",
       gender: "male",
       matrial_status: "Ženatý/Vydatá",
@@ -31,7 +31,7 @@ const generateRandomPeople = (count) => {
     },
     {
       name: "Jozef",
-      surname: "Sokol",
+      surname: "Minulý",
       role: "Roľník",
       gender: "male",
       matrial_status: "Ženatý/Vydatá, 3 deti",
@@ -42,7 +42,7 @@ const generateRandomPeople = (count) => {
     },
     {
       name: "Ján",
-      surname: "Sokolý",
+      surname: "Milený",
       role: "Roľník",
       gender: "male",
       matrial_status: "Slobodný/á",
