@@ -1,129 +1,164 @@
+body {
+    font-family: 'Lora', serif;
+    background-color: #fdf7f1;
+    color: #5a4635;
+    margin: 0;
+    padding: 0;
+}
+
 header {
-	border-bottom: 2px solid #d9dad7;
+	border-bottom: 2px solid #a89f91;
 	text-align: center;
 	height: 110px;
     box-sizing: border-box;
-	
+	background-color: #e9dac3;
+	font-family: 'Great Vibes', cursive;
+	color: #5a4635;
+    font-size: 30px;
+	line-height: 110px;
 }
 
-section{
-	color: #3b4754;
-	border-radius: 20px;
-	background-color: #edf0f4;
-	margin: 5em 20em 0em 20em;
-	padding: 2em 5em 5em 3em;
-	float:none;
-	clear:both;
+section {
+    color: #5a4635;
+    border-radius: 20px;
+    background-color: #faf4eb;
+    margin: 3em auto;
+    padding: 2em;
+    max-width: 1500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-#main_section{
-	background-color:#f8f8f8;
-	padding:1em;
-}
-#main_section section{
-	color: #3b4754;
-	border-radius: 20px;
-	background-color: #edf0f4;
-	margin: 2em 5em;
-	padding: 2em 5em 5em 3em;
-	text-align: center;
-	float:none;
-	clear:both;
-	border: 1px solid #29323d;
-}
-#notification{
-	margin: 2em 5em;
-	padding: 2em 5em 2em 3em;
-	clear:none;
-}
-hr{
-	border: 1px solid #d9dad7;
-	margin: 20px 0 30px 0;
-}
-fieldset{
-	border: 0em;
-}
-legend,h2{
-	margin: 0px;
-	font-weight: bold;
-	font-size: 1.5em;
-	color: #29323d;
-}
-h1{
-	color: #29323d;
-	margin-top: 0;
-}
-p{
-	padding-bottom: 0.3em;
+#main_section {
+    background-color: #f6efe3;
+    padding: 2em;
+    border-radius: 15px;
+    border: 1px solid #a89f91;
 }
 
-input, select{
-	border: 0.1em 0.1em 0.1em 0.1em;
-	border-color: #d9dad7;
-	border-radius: 8px;
-	height: 25px;
-	width: 200px;
-	margin: 2px;
+h1 {
+    color: #5a4635;
+    text-align: center;
+    font-size: 2.5em;
+    margin: 0.5em 0;
 }
 
-
-input[type="submit"]{
-	color: black;
-	border-radius: 8px;
-	height: 30px;
-	width: 200px;
-	text-align: center;
-}
-
-form {
-  max-width: 400px;
-  margin: 0 auto;
-  font-size: 15px;
-}
-
-form button {
-  align-self: center;
-}
-
-
-a{
-	margin: 0em 1em 0em 1em;
-	font-weight:bold;
-	color: #29323d;
-	font-size: 20px;
-}
-
-
-#MAIN_TEXT {
-text-decoration: none;
-}
-
-#lang {
-float:right;
-padding-right:2.5%;
-}
-
-nav{
-	text-align: center;
-	border-bottom: 2px solid #d9dad7;
-	display: flex;
-	justify-content: space-evenly; 
-	width: 100%;
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #e3d0b6;
+    padding: 1em 0;
+    border-bottom: 2px solid #a89f91;
 }
 
 nav a {
-  text-decoration: none;
-  display: block;
-  width: 20%;
-  padding: 10px 0;
-  text-align: center;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #5a4635;
+    padding: 0.5em 1em;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 nav a.active {
-  background-color: #e6ffe6;
-  color: black;
+    background-color: rgb(194, 167, 140);
+    color: black;
 }
 
 nav a:hover {
-  color: #007bff;
+    background-color: #cbb59e;
+    color: #fff;
+    border-radius: 5px;
+}
+
+input, select {
+    border: 1px solid #a89f91;
+    border-radius: 8px;
+    height: 30px;
+    width: 100%;
+    margin: 10px 0;
+    padding: 0 10px;
+}
+
+input[type="submit"] {
+    background-color: #b8987e;
+    color: white;
+    border: none;
+    height: 40px;
+    width: auto;
+    padding: 0 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: auto;
+    display: block;
+    position: relative;
+    right: 0;
+}
+
+input[type="submit"]:hover {
+    background-color: #a17c62;
+}
+
+/*footer {*/
+/*    text-align: center;*/
+/*    padding: 1em;*/
+/*    background-color: #e9dac3;*/
+/*    color: #5a4635;*/
+/*    border-top: 2px solid #a89f91;*/
+/*    margin-top: 2em;*/
+/*    position: relative;*/
+/*}*/
+
+/* Štýly pre rodostrom */
+/*.tree-container {*/
+/*    background-color: #f8efe4;*/
+/*    padding: 2em;*/
+/*    border-radius: 15px;*/
+/*    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+/*}*/
+
+.tree-node {
+    background-color: #e9dac3;
+    border-radius: 10px;
+    padding: 1em;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 1em;
+    font-size: 1.1em;
+    color: #5a4635;
+}
+
+.tree-node:hover {
+    background-color: #cbb59e;
+    color: white;
+}
+
+.tree-controls button {
+    background-color: #b8987e;
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tree-controls button:hover {
+    background-color: #a17c62;
+}
+
+.form-area {
+    padding: 1em 2em;
+    border-radius: 15px;
+    margin: 2em auto;
+    max-width: 800px; /* Nastavenie šírky */
+    background-color: #fdf7f1; /* Zjednotenie farby pozadia */
+    border: 1px solid #a89f91; /* Usporiadanie hrán formulára *!*/
+}
+
+.results-area {
+    margin: 1em;
+    padding: 1em;
+    border-radius: 10px;
+    background-color: #f9f4ee;
 }
