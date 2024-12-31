@@ -65,13 +65,39 @@ const AncestorSearch = ({onSelect,addAncestorNode}) => {
     death_date: '',
     birth_city: '',
     death_city: '',
+	job: '',
+	spouse: '',
+	children: '',
+	wedding_date: '',
+	batpism_date: '',
   });
 
+  const [activeTab, setActiveTab] = useState('basic');
+  const [loading, setLoading] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [modalData, setModalData] = useState(null);
   const randomPeople = generateRandomPeople(20);
+  
+  const handleTabSwitch = (tab) => {
+    setActiveTab(tab);
+	// Clear data
+    setFormData({
+    name: '',
+    surname: '',
+    gender: 'unknown',
+    birth_date: '',
+    death_date: '',
+    birth_city: '',
+    death_city: '',
+	job: '',
+	spouse: '',
+	children: '',
+	wedding_date: '',
+	batpism_date: '',
+    });
+  };
 
-  const handleChange = (e) => {
+   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
@@ -95,19 +121,25 @@ const AncestorSearch = ({onSelect,addAncestorNode}) => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    const results = randomPeople.filter((person) => {
-      return (
-        (!formData.name || removeDiacritics(person.name.toLowerCase()).includes(removeDiacritics(formData.name.toLowerCase()))) &&
-        (!formData.surname || removeDiacritics(person.surname.toLowerCase()).includes(removeDiacritics(formData.surname.toLowerCase()))) &&
-        (formData.gender === 'unknown' || person.gender === formData.gender) &&
-        (!formData.birth_date || person.birth_date === formData.birth_date) &&
-        (!formData.death_date || person.death_date === formData.death_date) &&
-        (!formData.birth_city || removeDiacritics(person.birth_city.toLowerCase()).includes(removeDiacritics(formData.birth_city.toLowerCase()))) &&
-        (!formData.death_city || removeDiacritics(person.death_city.toLowerCase()).includes(removeDiacritics(formData.death_city.toLowerCase())))
-      );
-    });
-  
-    setSearchResults(results);
+    setLoading(true); // Start loading
+
+    // Simulate search delay
+    setTimeout(() => {
+      const results = randomPeople.filter((person) => {
+        return (
+          (!formData.name || removeDiacritics(person.name.toLowerCase()).includes(removeDiacritics(formData.name.toLowerCase()))) &&
+          (!formData.surname || removeDiacritics(person.surname.toLowerCase()).includes(removeDiacritics(formData.surname.toLowerCase()))) &&
+          (formData.gender === 'unknown' || person.gender === formData.gender) &&
+          (!formData.birth_date || person.birth_date === formData.birth_date) &&
+          (!formData.death_date || person.death_date === formData.death_date) &&
+          (!formData.birth_city || removeDiacritics(person.birth_city.toLowerCase()).includes(removeDiacritics(formData.birth_city.toLowerCase()))) &&
+          (!formData.death_city || removeDiacritics(person.death_city.toLowerCase()).includes(removeDiacritics(formData.death_city.toLowerCase()))) &&
+		  (!formData.job || removeDiacritics(person.role.toLowerCase()).includes(removeDiacritics(formData.job.toLowerCase())))
+        );
+      });
+      setSearchResults(results);
+      setLoading(false); // Stop loading
+    }, 4000); // Simulate 4 seconds of loading
   };
 
   const openModal = (result) => {
@@ -122,6 +154,27 @@ const AncestorSearch = ({onSelect,addAncestorNode}) => {
   return (
     <section className="container d-flex">
       <div id="search-form-area" className="form-area">
+	  
+	  {/* Tabs */}
+      <div className="tabs">
+        <button
+          className={`tab-button ${activeTab === 'basic' ? 'active' : ''}`}
+          onClick={() => handleTabSwitch('basic')}
+        >
+          Vyhľadávanie
+        </button>
+        <button
+          className={`tab-button ${activeTab === 'advanced' ? 'active' : ''}`}
+          onClick={() => handleTabSwitch('advanced')}
+        >
+          Rozšírené vyhľadávanie
+        </button>
+      </div>
+	  
+	  
+	  {/* Tab Content */}
+	  
+	  {activeTab === 'basic' && (
         <form
           className="d-flex flex-column align-items-center justify-content-center"
           onSubmit={handleSubmit}
@@ -218,10 +271,178 @@ const AncestorSearch = ({onSelect,addAncestorNode}) => {
             <input type="submit" name="search" id="search" value="VYHĽADAŤ" />
           </p>
         </form>
+	  )}
+	  
+	  
+	  {activeTab === 'advanced' && (
+	          <form
+          className="d-flex flex-column align-items-center justify-content-center"
+          onSubmit={handleSubmit}
+        >
+		          <fieldset className="mb-3">
+            <legend>Zadanie známych údajov</legend>
+            <p>Vyplňte čo najviac údajov</p>
+            <p>Môžete zadať aj nepresné informácie</p>
+            <table>
+			<tr>
+              <td align="right"><label htmlFor="name">Meno:</label></td>
+               <input
+                type="text"
+                name="name"
+                id="name"
+                size="20"
+                value={formData.name}
+                onChange={handleChange}
+              />
+            </tr>
+            <tr>
+               <td align="right"><label htmlFor="surname">Priezvisko:</label></td>
+              <input
+                type="text"
+                name="surname"
+                id="surname"
+                size="20"
+                value={formData.surname}
+                onChange={handleChange}
+              />
+            </tr>
+            <tr>
+              <td align="right"><label htmlFor="gender">Pohlavie:</label></td>
+              <select
+                name="gender"
+                id="gender"
+                value={formData.gender}
+                onChange={handleChange}
+              >
+                <option value="unknown">Neznáme</option>
+                <option value="male">Muž</option>
+                <option value="female">Žena</option>
+                <option value="other">Iné</option>
+              </select>
+            </tr>
+            <tr>
+              <td align="right"><label htmlFor="birth_date">Dátum narodenia:</label></td>
+              <input
+                type="date"
+                name="birth_date"
+                id="birth_date"
+                size="20"
+                value={formData.birth_date}
+                onChange={handleChange}
+              />
+            </tr>
+            <tr>
+              <td align="right"><label htmlFor="death_date">Dátum úmrtia:</label></td>
+              <input
+                type="date"
+                name="death_date"
+                id="death_date"
+                size="20"
+                value={formData.death_date}
+                onChange={handleChange}
+              />
+            </tr>
+            <tr>
+              <td align="right"><label htmlFor="birth_city">Miesto narodenia:</label></td>
+              <input
+                type="text"
+                name="birth_city"
+                id="birth_city"
+                size="20"
+                value={formData.birth_city}
+                onChange={handleChange}
+              />
+            </tr>
+            <tr>
+              <td align="right"><label htmlFor="death_city">Miesto úmrtia:</label></td>
+              <input
+                type="text"
+                name="death_city"
+                id="death_city"
+                size="20"
+                value={formData.death_city}
+                onChange={handleChange}
+              />
+            </tr>
+			<tr>
+              <td align="right"><label htmlFor="spouse">Manžel-ka:</label></td>
+              <input
+                type="text"
+                name="spouse"
+                id="spouse"
+                size="20"
+                value={formData.spouse}
+                onChange={handleChange}
+              />
+            </tr>
+			<tr>
+              <td align="right"><label htmlFor="children">Deti:</label></td>
+              <input
+                type="text"
+                name="children"
+                id="children"
+                size="20"
+                value={formData.children}
+                onChange={handleChange}
+              />
+            </tr>
+			<tr>
+              <td align="right"><label htmlFor="job">Povolanie:</label></td>
+              <input
+                type="text"
+                name="job"
+                id="job"
+                size="20"
+                value={formData.job}
+                onChange={handleChange}
+              />
+            </tr>
+			<tr>
+              <td align="right"><label htmlFor="wedding_date">Dátum svadby:</label></td>
+              <input
+                type="date"
+                name="wedding_date"
+                id="wedding_date"
+                size="20"
+                value={formData.wedding_date}
+                onChange={handleChange}
+              />
+            </tr>
+			            <tr>
+              <td align="right"><label htmlFor="baptism_date">Dátum krstenia:</label></td>
+              <input
+                type="date"
+                name="baptism_date"
+                id="baptism_date"
+                size="20"
+                value={formData.baptism_date}
+                onChange={handleChange}
+              />
+            </tr>
+			
+			</table>
+          </fieldset>
+		  
+          <p>
+            <input type="submit" name="search" id="search" value="VYHĽADAŤ" />
+          </p>
+        </form>
+	  
+	  )}
+		
+		
+		
       </div>
 
       <div id="search-results-area" className="results-area">
-        {searchResults.length > 0 ? (
+        {loading ? (
+          <div className="loading">
+            <div className="spinner"></div>
+            <p>
+              Vyhľadávanie predka {formData.name} {formData.surname}...
+            </p>
+          </div>
+        ) : searchResults.length > 0 ? (
           <>
             <h2>Výsledky vyhľadávania</h2>
             <div className="results-container">
