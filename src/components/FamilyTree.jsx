@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router'
 import { Graph } from '@antv/x6';
 import { register } from '@antv/x6-react-shape'
 import './FamilyTree.css';
@@ -16,6 +17,8 @@ register({
 })
 
 const FamilyTree = () => {
+  const location = useLocation();
+  
   // handlers for x6 graph
   const containerRef = useRef(null);
   const graphRef = useRef(null);
@@ -246,10 +249,12 @@ const FamilyTree = () => {
 
     handleZoomOut();
     g.centerContent();
+
+    if (location.state?.openModal) {
+      setIsModalOpen(true);
+    }
   }, []);
-
   
-
   const addAncestorNode = (ancestorData) => {
     if (!graph) return;
 

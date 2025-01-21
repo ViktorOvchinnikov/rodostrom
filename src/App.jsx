@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
+import { Routes, Route, NavLink, useNavigate } from 'react-router-dom';
 import FamilyTree from './components/FamilyTree';
 import AncestorSearch from './components/AncestorSearch';
 import Communication from './components/Communication';
@@ -12,13 +12,19 @@ const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [parentNode, setParentNode] = useState(null);
 
-  const handleSearchClick = () => {
-    window.dispatchEvent(new CustomEvent('openFamilyTreeModal')); // Dispatch a custom event to open the modal
+  const navigate = useNavigate();
+
+  const handleSearchClick = (e) => {
+  if (window.location.pathname === '/search' || window.location.pathname === '/' ) {
+    window.dispatchEvent(new CustomEvent('openFamilyTreeModal'));
+  } else {
+    e.preventDefault();
+    navigate('/search', { state: { openModal: true } });
+  }
   };
 
-
   return (
-    <Router>
+    <>
       <header>
         <a>
           <h1>RODOSTROM</h1>
@@ -30,14 +36,9 @@ const App = () => {
             Môj rodostrom
           </NavLink>
           <NavLink to="/search" 
+          onClick={handleSearchClick}
           className={({ isActive }) => (isActive ? 'active' : '')}
-          
-          onClick={(e) => {
-            e.preventDefault();
-            handleSearchClick(); // Trigger the modal as if a node's + button was clicked
-          }}
             >
-          
             Vyhľadať predka
           </NavLink>
           <NavLink to="/communication" className={({ isActive }) => (isActive ? 'active' : '')}>
@@ -57,7 +58,7 @@ const App = () => {
           <Route path="/shared-trees" element={<SharedTrees />} />
         </Routes>
       </div>
-    </Router>
+    </>
   );
 };
 
