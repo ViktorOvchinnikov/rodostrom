@@ -16,6 +16,10 @@
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
     margin: 1em; /* Space around the form area */
     width: 45%; /* Adjust width if needed */
+    max-height: 550px; /* Set maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    scrollbar-width: thin; /* For modern browsers, make the scrollbar thin */
+    scrollbar-color: #d9dad7 #f8f8f8; /* Custom colors for the scrollbar */
 }
 
 
