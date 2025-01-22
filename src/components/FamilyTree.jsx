@@ -29,6 +29,18 @@ const FamilyTree = () => {
   const [parentNode, setParentNode] = useState(null);
   const [view, setView] = useState('familyTree'); // 'familyTree' or 'ancestorSearch'
 
+  const [isAddingEdge, setIsAddingEdge] = useState(false);
+  const [firstSelectedNode, setFirstSelectedNode] = useState(null);
+
+  const toggleAddingEdge = () => {
+    if (isAddingEdge) {
+      setIsAddingEdge(false);
+      setFirstSelectedNode(null);
+    } else {
+      setIsAddingEdge(true);
+      setFirstSelectedNode(null);
+    }
+  };
 
   let isPanning = false;
   let startPoint = null;
@@ -132,7 +144,7 @@ const FamilyTree = () => {
     g.on('node:mousedown', ({ e, node }) => {
       console.log("mousedown")
       isDragging = true;
-      draggingNode = node; // Сохраняем узел
+      draggingNode = node;
       startPosition = { x: e.clientX, y: e.clientY };
     });
 
@@ -181,20 +193,6 @@ const FamilyTree = () => {
     g.on('blank:mouseup', () => {
       isPanning = false;
       startPoint = null;
-    });
-    
-
-    g.on('node:click', ({ node }) => {
-      g.getNodes().forEach((n) => {
-        const data = n.getData();
-        n.setData({...data,selected: false });
-
-      });
-      const data = node.getData();
-      node.setData({...data,selected: true });
-
-      setSelectedNode(node.getData());
-
     });
 
     g.on('node:button-plus:click', ({ node }) => {
@@ -254,6 +252,41 @@ const FamilyTree = () => {
       setIsModalOpen(true);
     }
   }, []);
+
+  useEffect(() => {
+    if (!graph) return;
+
+    graph.off('node:click');
+
+    graph.on('node:click', ({ node }) => {
+      console.log(isAddingEdge);
+      if (isAddingEdge) {
+        if (!firstSelectedNode) {
+          console.log('first node set');
+          console.log(node);
+          setFirstSelectedNode(node);
+        } else {
+          graph.addEdge({
+            source: firstSelectedNode,
+            target: node,
+            zIndex: 1,
+          });
+          setFirstSelectedNode(null);
+          setIsAddingEdge(false);
+        }
+      } else {
+        graph.getNodes().forEach((n) => {
+          const data = n.getData();
+          n.setData({...data,selected: false });
+  
+        });
+        const data = node.getData();
+        node.setData({...data,selected: true });
+  
+        setSelectedNode(node.getData());
+      }
+    });
+  }, [graph, isAddingEdge, firstSelectedNode]);
   
   const addAncestorNode = (ancestorData) => {
     if (!graph) return;
@@ -303,6 +336,9 @@ const FamilyTree = () => {
         <div className="zoom-controls">
           <button onClick={handleZoomIn}>+</button>
           <button onClick={handleZoomOut}>−</button>
+          <button onClick={toggleAddingEdge} className={isAddingEdge ? 'active' : ''}>
+          {isAddingEdge ? 'Zrušiť' : 'Pridanie prepojenia medzi príbuznými'}
+        </button>
         </div>
         {/* <button onClick={exportGraph}>Export graph</button> */}
           {/* <button
