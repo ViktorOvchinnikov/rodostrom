@@ -52,6 +52,9 @@ const FamilyTree = () => {
   // handle search modal
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // handle helper modal
+  const [isHelperModalOpen, setHelperModalOpen] = useState(false);
+
   // export graph as json
   const exportGraph = () => {
     if (graph) {
@@ -78,14 +81,16 @@ const FamilyTree = () => {
     if (!graph) return;
 
     if(!parentNode){
-      graph.addNode({
+      const node = graph.addNode({
         shape: 'custom-react-node',
         x: -800, // Default position (adjust as needed)
         y: 400,
         data,
       });
       setIsModalOpen(false); // Close the modal after adding the node
-      setParentNode(null);
+      toggleAddingEdge();
+      setHelperModalOpen(true);
+      setFirstSelectedNode(node);
     }
     else{
       const { x, y } = parentNode.position();
@@ -251,6 +256,10 @@ const FamilyTree = () => {
     if (location.state?.openModal) {
       setIsModalOpen(true);
     }
+
+    return () => {
+      g.off();
+    }
   }, []);
 
   useEffect(() => {
@@ -267,8 +276,8 @@ const FamilyTree = () => {
           setFirstSelectedNode(node);
         } else {
           graph.addEdge({
-            source: firstSelectedNode,
-            target: node,
+            source: node,
+            target: firstSelectedNode,
             zIndex: 1,
           });
           setFirstSelectedNode(null);
@@ -336,9 +345,9 @@ const FamilyTree = () => {
         <div className="zoom-controls">
           <button onClick={handleZoomIn}>+</button>
           <button onClick={handleZoomOut}>−</button>
-          <button onClick={toggleAddingEdge} className={isAddingEdge ? 'active' : ''}>
+          {/* <button onClick={toggleAddingEdge} className={isAddingEdge ? 'active' : ''}>
           {isAddingEdge ? 'Zrušiť' : 'Pridanie prepojenia medzi príbuznými'}
-        </button>
+        </button> */}
         </div>
         {/* <button onClick={exportGraph}>Export graph</button> */}
           {/* <button
@@ -381,6 +390,12 @@ const FamilyTree = () => {
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <AncestorSearch   onSelect={addNode}/>
+      </Modal>
+
+      <Modal isOpen={isHelperModalOpen} onClose={() => setHelperModalOpen(false)}>
+        <div>
+          <h2>Teraz dvakrát kliknite na predka, aby ste ho prepojili s dieťaťom.</h2>
+        </div>
       </Modal>
       
       
