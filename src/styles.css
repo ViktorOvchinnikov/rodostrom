@@ -226,3 +226,17 @@ input[type="submit"]:active {
   border-radius: 5px;
 }
 
+.zoom-button {
+    width: 30px; 
+    height: 30px;
+    padding: 0;
+    background: none;
+    display: inline-block;
+    cursor: pointer; 
+}
+
+.zoom-button img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain; 
+}

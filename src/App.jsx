@@ -39,7 +39,7 @@ const App = () => {
           onClick={handleSearchClick}
           className={({ isActive }) => (isActive ? 'active' : '')}
             >
-            Vyhľadať predka
+            Pridať predka
           </NavLink>
           <NavLink to="/communication" className={({ isActive }) => (isActive ? 'active' : '')}>
             Komunikácia

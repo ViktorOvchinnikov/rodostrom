@@ -343,8 +343,8 @@ const FamilyTree = () => {
 
         <div id="container" className="family-tree-container">
         <div className="zoom-controls">
-          <button onClick={handleZoomIn}>+</button>
-          <button onClick={handleZoomOut}>−</button>
+          <button className="zoom-button" onClick={handleZoomIn}><img src="/zoomin.png" alt="+" /></button>
+          <button className="zoom-button" onClick={handleZoomOut}><img src="/zoomout.png" alt="-" /></button>
           {/* <button onClick={toggleAddingEdge} className={isAddingEdge ? 'active' : ''}>
           {isAddingEdge ? 'Zrušiť' : 'Pridanie prepojenia medzi príbuznými'}
         </button> */}
