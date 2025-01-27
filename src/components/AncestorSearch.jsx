@@ -446,10 +446,10 @@ const AncestorSearch = ({onSelect,addAncestorNode}) => {
                   </div>
                   <div className="result-center">
                     <h3>{result.name} {result.surname}</h3>
-                    <p>{result.role}</p>
+                    <p>{result.job}</p>
                     <p>{result.matrial_status}</p>
-                    {result.death_date && <p>Dátum úmrtia: {result.death_date}</p>}
-                    {result.death_city && <p>Miesto úmrtia: {result.death_city}</p>}
+                    {result.died && <p>Dátum úmrtia: {result.died}</p>}
+                    {result.died_at && <p>Miesto úmrtia: {result.died_at}</p>}
                   </div>
                   <div className="result-right">
                     <button
