@@ -6,26 +6,94 @@
 }
 
 .family-tree-container {
-  flex: 1; /* Allow graph to take up remaining space *!*/
+  flex: 1; /* Allow graph to take up remaining space */
   height: 550px; /* Fixed height to prevent scrolling */
-  /*background-color: #f8f8f8;*/
-  /*border: 1px solid #d9dad7;*/
   border-radius: 15px;
   margin: 1em 0;
   overflow: hidden; /* Prevent scrolling inside the graph container */
-  /*background-color: #f8efe4;*/
-  /*padding: 2em;*/
-  /*border-radius: 15px;*/
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .node-info-panel {
-  width: 200px; /* Fixed width for info panel */
+  width: 250px; /* Fixed width for info panel */
   flex-shrink: 0; /* Prevent the panel from resizing */
   background-color: #f8f8f8;
   padding: 1em;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
   overflow-y: auto; /* Allow scrolling for content inside the panel */
+  display: flex;
+  flex-direction: column;
+}
+
+.node-info-panel strong {
+  text-align: left;
+  display: block;
+  margin-top: 2px; /* Add spacing below each label */
+}
+
+.node-info-panel input {
+  width: calc(100% - 1em); /* Slightly narrower than the panel for aesthetics */
+  height: 30px;
+  margin-bottom: 2px; /* Reduce spacing between input fields */
+  border: 1px solid #d9dad7;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+
+
+.node-info-panel button {
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Pridať predka button styling */
+.node-info-panel .add-button0 {
+  background-color: #b8f2ba;
+  border: 2px solid #61b861;
+  width: 127px;
+  height: 35px;
+  color: #2e7d32;
+}
+
+.node-info-panel .add-button0:hover {
+  background-color: #a7e8ab;
+}
+
+/* Upraviť informácie button styling */
+.node-info-panel .edit-button {
+  background-color: #a7d8f0;
+  border: 2px solid #4793c2;
+  width: 120px;
+  color: #1a5679;
+}
+
+.node-info-panel .edit-button:hover {
+  background-color: #95cce4;
+}
+
+/* Uložiť button styling */
+.node-info-panel .save-button {
+  background-color: #b8f2ba;
+  border: 2px solid #61b861;
+  color: #2e7d32;
+}
+
+.node-info-panel .save-button:hover {
+  background-color: #a7e8ab;
+}
+
+/* Odstrániť button styling */
+.node-info-panel .delete-button {
+  background-color: #f2b8b8;
+  border: 2px solid #c26161;
+  color: #7d2e2e;
+}
+
+.node-info-panel .delete-button:hover {
+  background-color: #e8a7a7;
 }
 
 .family-tree-section {
@@ -48,7 +116,7 @@
   margin: 2em auto;
   max-width: 800px; /* Nastavenie šírky */
   background-color: #fdf7f1; /* Zjednotenie farby pozadia */
-  border: 1px solid #a89f91; /* Usporiadanie hrán formulára *!*/
+  border: 1px solid #a89f91; /* Usporiadanie hrán formulára */
 }
 
 .graph-area {

@@ -10,46 +10,46 @@ const generateRandomPeople = (count) => {
     {
       name: "Ján",
       surname: "Minulý",
-      role: "Šľachtic",
+      job: "Šľachtic",
       gender: "male",
       matrial_status: "Ženatý/Vydatá, 2 deti",
-      birth_date: "21.6.1877",
-      death_date: "1892",
-      birth_city: "Smolenice",
-      death_city: "Smolenice"
+      born: "21.6.1877",
+      died: "1892",
+      born_at: "Smolenice",
+      died_at: "Smolenice"
     },
     {
       name: "Ján",
       surname: "Minulý",
-      role: "Krajčír",
+      job: "Krajčír",
       gender: "male",
       matrial_status: "Ženatý/Vydatá",
-      birth_date: "15.6.1957",
-      death_date: "",
-      birth_city: "Banská Bystrica",
-      death_city: ""
+      born: "15.6.1957",
+      died: "",
+      born_at: "Banská Bystrica",
+      died_at: ""
     },
     {
       name: "Jozef",
       surname: "Minulý",
-      role: "Roľník",
+      job: "Roľník",
       gender: "male",
       matrial_status: "Ženatý/Vydatá, 3 deti",
-      birth_date: "21.6.1857",
-      death_date: "1892",
-      birth_city: "Banská Bystrica",
-      death_city: "Smolenice"
+      born: "21.6.1857",
+      died: "1892",
+      born_at: "Banská Bystrica",
+      died_at: "Smolenice"
     },
     {
       name: "Ján",
       surname: "Milený",
-      role: "Roľník",
+      job: "Roľník",
       gender: "male",
       matrial_status: "Slobodný/á",
-      birth_date: "14.3.1995",
-      death_date: "",
-      birth_city: "Smolenice",
-      death_city: ""
+      born: "14.3.1995",
+      died: "",
+      born_at: "Smolenice",
+      died_at: ""
     },
   ];
 
@@ -65,11 +65,11 @@ const AncestorSearch = ({onSelect,addAncestorNode}) => {
     death_date: '',
     birth_city: '',
     death_city: '',
-	job: '',
-	spouse: '',
-	children: '',
-	wedding_date: '',
-	batpism_date: '',
+    job: '',
+    spouse: '',
+    children: '',
+    wedding_date: '',
+    batpism_date: '',
   });
 
   const [activeTab, setActiveTab] = useState('basic');
@@ -82,41 +82,33 @@ const AncestorSearch = ({onSelect,addAncestorNode}) => {
     setActiveTab(tab);
 	// Clear data
     setFormData({
-    name: '',
-    surname: '',
-    gender: 'unknown',
-    birth_date: '',
-    death_date: '',
-    birth_city: '',
-    death_city: '',
-	job: '',
-	spouse: '',
-	children: '',
-	wedding_date: '',
-	batpism_date: '',
+      name: '',
+      surname: '',
+      gender: 'unknown',
+      birth_date: '',
+      death_date: '',
+      birth_city: '',
+      death_city: '',
+      job: '',
+      spouse: '',
+      children: '',
+      wedding_date: '',
+      batpism_date: '',
     });
   };
 
-   const handleChange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const handleAddAncestor = (data) => {
-    //if (onAddAncestor) {
     addAncestorNode(data);
-
-      //const storedAncestors = JSON.parse(localStorage.getItem('newAncestors')) || [];
-      //localStorage.setItem('newAncestors', JSON.stringify([...storedAncestors, data]));
-     // console.log('Person saved to localStorage:', data);
-    //} else {
-    //  console.error("onAddAncestor is not provided or is not a function");
-    //}
   };
 
   const removeDiacritics = (str) => {
     if (!str) return '';
-    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    return str.normalize('NFD').replace(/[̀-\u036f]/g, '');
   };
   
   const handleSubmit = (e) => {
@@ -130,17 +122,18 @@ const AncestorSearch = ({onSelect,addAncestorNode}) => {
           (!formData.name || removeDiacritics(person.name.toLowerCase()).includes(removeDiacritics(formData.name.toLowerCase()))) &&
           (!formData.surname || removeDiacritics(person.surname.toLowerCase()).includes(removeDiacritics(formData.surname.toLowerCase()))) &&
           (formData.gender === 'unknown' || person.gender === formData.gender) &&
-          (!formData.birth_date || person.birth_date === formData.birth_date) &&
-          (!formData.death_date || person.death_date === formData.death_date) &&
-          (!formData.birth_city || removeDiacritics(person.birth_city.toLowerCase()).includes(removeDiacritics(formData.birth_city.toLowerCase()))) &&
-          (!formData.death_city || removeDiacritics(person.death_city.toLowerCase()).includes(removeDiacritics(formData.death_city.toLowerCase()))) &&
-		  (!formData.job || removeDiacritics(person.role.toLowerCase()).includes(removeDiacritics(formData.job.toLowerCase())))
+          (!formData.birth_date || person.born === formData.birth_date) &&
+          (!formData.death_date || person.died === formData.death_date) &&
+          (!formData.birth_city || removeDiacritics(person.born_at.toLowerCase()).includes(removeDiacritics(formData.birth_city.toLowerCase()))) &&
+          (!formData.death_city || removeDiacritics(person.died_at.toLowerCase()).includes(removeDiacritics(formData.death_city.toLowerCase()))) &&
+          (!formData.job || removeDiacritics(person.job.toLowerCase()).includes(removeDiacritics(formData.job.toLowerCase())))
         );
       });
       setSearchResults(results);
       setLoading(false); // Stop loading
     }, 4000); // Simulate 4 seconds of loading
   };
+
 
   const openModal = (result) => {
     console.log(result);

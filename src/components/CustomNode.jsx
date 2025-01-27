@@ -4,7 +4,7 @@ import './CustomNode.css';
 
 export const CustomNode = ({ node }) => {
   const data = node.getData() || {};
-  const { name, surname, gender,job, born,born_at,died, died_at, selected } = data;
+  const { name, surname, gender, job, born,born_at,died, died_at, selected } = data;
 
   const imageUrl = gender === 'male'
     ? `${process.env.PUBLIC_URL}/male.png`
