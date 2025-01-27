@@ -546,22 +546,26 @@ const FamilyTree = () => {
         ) : (
           <>
             <button
-              className="add-button0"
-              onClick={() => {
-                setParentNode(
-                  graph.getNodes().find((n) => n.getData() === selectedNode)
-                );
-                setIsModalOpen(true);
-              }}
-            >
-              Pridať predka
-            </button>
-            <button
               className="edit-button"
               onClick={() => setIsEditing(true)}
             >
               Upraviť
             </button>
+            <button
+              className="delete-button"
+              onClick={() => {
+                const node = graph
+                  .getNodes()
+                  .find((n) => n.getData() === selectedNode);
+                if (node) {
+                  graph.removeNode(node);
+                }
+                setSelectedNode(null); // Clear selected node
+                setIsEditing(false);
+              }}
+            >
+              Odstrániť člena
+            </button>            
           </>
         )}
       </div>

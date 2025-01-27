@@ -25,9 +25,22 @@ export const CustomNode = ({ node }) => {
 
   return (
     <div className={`custom-node ${selected ? 'selected' : ''}`}> 
+      <button
+           className="node-button"
+           onClick={() => node.model.graph.trigger('node:button-plus:click', { node })}
+        >
+          +
+        </button>
+        <button
+         className="node-button"
+         onClick={() => node.model.graph.trigger('node:button-plus:click', { node })}
+        >
+          +
+         </button>
       <img src={imageUrl} alt={gender} className="node-image" />
       <div className="node-name">{name} {surname}</div>
       <div className="node-buttons">
+      
         {/*<button
           className="node-button"
           onClick={() => node.model.graph.trigger('node:button-plus:click', { node })}
