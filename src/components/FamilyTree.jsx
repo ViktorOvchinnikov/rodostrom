@@ -25,6 +25,7 @@ const FamilyTree = () => {
   const [graph, setGraph] = useState(null);
   const [selectedNode, setSelectedNode] = useState(null);
   const [isRenaming, setIsRenaming] = useState(false);
+  const [isEditing, setIsEditing] = useState(false); // New state for edit mode
   const [newName, setNewName] = useState('');
   const [parentNode, setParentNode] = useState(null);
   const [view, setView] = useState('familyTree'); // 'familyTree' or 'ancestorSearch'
@@ -145,12 +146,30 @@ const FamilyTree = () => {
     });
 
     // Panning and dragging
+    g.on('blank:click', () => {
+      g.getNodes().forEach((n) => {
+        const data = n.getData();
+        n.setData({...data,selected: false });
+        setIsEditing(false);
+        setSelectedNode();
 
+
+      });
+
+    });
     g.on('node:mousedown', ({ e, node }) => {
       console.log("mousedown")
+<<<<<<< Updated upstream
       isDragging = true;
       draggingNode = node;
       startPosition = { x: e.clientX, y: e.clientY };
+=======
+      if (e.button === 0) { // Left mouse button
+        isDragging = true;
+        draggingNode = node;
+        startPosition = { x: e.clientX, y: e.clientY };
+      }
+>>>>>>> Stashed changes
     });
 
     g.on('node:mousemove', ({ e }) => {
@@ -167,18 +186,13 @@ const FamilyTree = () => {
 
     g.on('node:mouseup', () => {
       console.log("mouseup")
-      isDragging = false; 
-      draggingNode = null;
-      startPosition = null;
+      if (isDragging) {
+        isDragging = false;
+        draggingNode = null;
+        startPosition = null;
+      }
     });
-    g.on('blank:click', () => {
-      g.getNodes().forEach((n) => {
-        const data = n.getData();
-        n.setData({...data,selected: false });
-
-      });
-
-    });
+    
 
     g.on('blank:mousedown', ({ e }) => {
       if (e.button === 0) {
@@ -199,6 +213,25 @@ const FamilyTree = () => {
       isPanning = false;
       startPoint = null;
     });
+<<<<<<< Updated upstream
+=======
+    
+
+    g.on('node:click', ({ node }) => {
+      
+      g.getNodes().forEach((n) => {
+        const data = n.getData();
+        n.setData({...data,selected: false });
+       
+
+      });
+      const data = node.getData();
+      node.setData({...data,selected: true });
+      setIsEditing(false);
+      setSelectedNode(node.getData());
+
+    });
+>>>>>>> Stashed changes
 
     g.on('node:button-plus:click', ({ node }) => {
       console.log('button-plus:click')
@@ -374,18 +407,185 @@ const FamilyTree = () => {
           <div ref={containerRef} />
         </div>
         <div className="node-info-panel">
-            {selectedNode ? (
-              <div>
-                <h2>Informácie o členovi stromu</h2>
-                <p><strong>Meno:</strong> {selectedNode.name}</p>
-                {selectedNode.surname && <p><strong>Priezvisko:</strong> {selectedNode.surname}</p>}
-                {selectedNode.job && <p><strong>Práca:</strong> {selectedNode.job}</p>}               
-               
+          {selectedNode ? (
+            <div>
+              <h2>Informácie o členovi stromu</h2>
+
+              {/* Editable Fields */}
+              {isEditing ? (
+                <>
+                  <label>
+                    <strong>Meno:</strong>
+                    <input
+                      type="text"
+                      value={selectedNode.name}
+                      onChange={(e) =>
+                        setSelectedNode((prev) => ({ ...prev, name: e.target.value }))
+                      }
+                    />
+                  </label>
+                  
+                  <label>
+                    <strong>Priezvisko:</strong>
+                    <input
+                      type="text"
+                      value={selectedNode.surname}
+                      onChange={(e) =>
+                        setSelectedNode((prev) => ({
+                          ...prev,
+                          surname: e.target.value,
+                        }))
+                      }
+                    />
+                  </label>
+                  
+                  
+                  <label>
+                    <strong>Práca:</strong>
+                    <input
+                      type="text"
+                      value={selectedNode.job}
+                      onChange={(e) =>
+                        setSelectedNode((prev) => ({ ...prev, job: e.target.value }))
+                      }
+                    />
+                  </label>
+                  <label>
+                    <strong>Deň narodenia:</strong>
+                    <input
+                      type="text"
+                      value={selectedNode.born}
+                      onChange={(e) =>
+                        setSelectedNode((prev) => ({ ...prev, born: e.target.value }))
+                      }
+                    />
+                  </label>
+                  <label>
+                    <strong>Miesto narodenia:</strong>
+                    <input
+                      type="text"
+                      value={selectedNode.born_at}
+                      onChange={(e) =>
+                        setSelectedNode((prev) => ({ ...prev, born_at: e.target.value }))
+                      }
+                    />
+                  </label>
+                  <label>
+                    <strong>Deň úmrtia:</strong>
+                    <input
+                      type="text"
+                      value={selectedNode.died}
+                      onChange={(e) =>
+                        setSelectedNode((prev) => ({ ...prev, died: e.target.value }))
+                      }
+                    />
+                  </label>
+                  <label>
+                    <strong>Miesto úmrtia:</strong>
+                    <input
+                      type="text"
+                      value={selectedNode.died_at}
+                      onChange={(e) =>
+                        setSelectedNode((prev) => ({ ...prev, died_at: e.target.value }))
+                      }
+                    />
+                  </label>
+                  
+                </>
+              ) : (
+                <>
+                  {/* Static Info */}
+                  <p>
+                    <strong>Meno:</strong> {selectedNode.name}
+                  </p>
+                  
+                    <p>
+                      <strong>Priezvisko:</strong> {selectedNode.surname}
+                    </p>
+                  
+                  
+                    <p>
+                      <strong>Práca:</strong> {selectedNode.job}
+                    </p>
+
+                    <p>
+                      <strong>Deň narodenia:</strong> {selectedNode.born}
+                    </p>
+                    <p>
+                      <strong>Miesto narodenia:</strong> {selectedNode.born_at}
+                    </p>
+                    <p>
+                      <strong>Deň úmrtia:</strong> {selectedNode.died}
+                    </p>
+                    <p>
+                      <strong>Miesto úmrtia:</strong> {selectedNode.died_at}
+                    </p>
+                  
+                </>
+              )}
+
+              {/* Buttons */}
+              <div className="buttons">
+                {isEditing ? (
+                  <>
+                    {/* Save Changes Button */}
+                    <button
+                      onClick={() => {
+                        const node = graph
+                          .getNodes()
+                          .find((n) => n.getData() === selectedNode);
+                        if (node) {
+                          node.setData(selectedNode);
+                          
+                        }
+                        setIsEditing(false); // Exit edit mode
+                      }}
+                    >
+                      Uložiť zmeny
+                    </button>
+
+                    {/* Delete Person Button */}
+                    <button
+                      onClick={() => {
+                        const node = graph
+                          .getNodes()
+                          .find((n) => n.getData() === selectedNode);
+                        if (node) {
+                          graph.removeNode(node);
+                           // Exit edit mode
+                        }
+                        setSelectedNode(null); // Clear selected node
+                          setIsEditing(false);
+                      }}
+                    >
+                      Odstrániť člena
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    {/* Add Person Button */}
+                    <button
+                      onClick={() => {
+                        setParentNode(
+                          graph.getNodes().find((n) => n.getData() === selectedNode)
+                        );
+                        setIsModalOpen(true);
+                      }}
+                    >
+                      Pridať člena
+                    </button>
+
+                    {/* Edit Info Button */}
+                    <button onClick={() => setIsEditing(true)}>Upraviť informácie</button>
+                  </>
+                )}
               </div>
-            ) : (
-              <p>Dvojklikom na člena stromu zobrazíte jeho informácie</p>
-            )}
-          </div>
+            </div>
+          ) : (
+            <p>Dvojklikom na člena stromu zobrazíte jeho informácie</p>
+          )}
+        </div>
+
       </div>
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>

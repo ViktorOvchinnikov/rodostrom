@@ -4,7 +4,7 @@ import './CustomNode.css';
 
 export const CustomNode = ({ node }) => {
   const data = node.getData() || {};
-  const { name, surname, gender, selected } = data;
+  const { name, surname, gender,job, born,born_at,died, died_at, selected } = data;
 
   const imageUrl = gender === 'male'
     ? `${process.env.PUBLIC_URL}/male.png`
@@ -28,7 +28,7 @@ export const CustomNode = ({ node }) => {
       <img src={imageUrl} alt={gender} className="node-image" />
       <div className="node-name">{name} {surname}</div>
       <div className="node-buttons">
-        <button
+        {/*<button
           className="node-button"
           onClick={() => node.model.graph.trigger('node:button-plus:click', { node })}
         >
@@ -39,7 +39,9 @@ export const CustomNode = ({ node }) => {
           onClick={() => node.model.graph.trigger('node:button-minus:click', { node })}
         >
           −
-        </button>
+        </button>*/}
+
+
         {/*        
         <button className="node-button" onClick={handleRenameClick}>
           ✏️

@@ -70,7 +70,11 @@
         "name": "Lukáš",
         "surname":"Minulý",
         "job":"historik",
-        "gender": "male"
+        "gender": "male",
+        "born_at": "Trnava",
+        "born": "18.11.1999",
+        "died": "",
+        "died_at": ""
       }
     },
     {
@@ -99,7 +103,11 @@
         "name": "Martin",
         "surname":"Minulý",
         "job":"Farár",
-        "gender": "male"
+        "gender": "male",
+        "born_at": "Trnava",
+        "born": "8.1.1979",
+        "died": "",
+        "died_at": ""
       }
     },
     {
@@ -128,7 +136,11 @@
         "name": "Evžen",
         "surname":"Minulý",
         "job":"Prezident",
-        "gender": "male"
+        "gender": "male",
+        "born_at": "Smolenice",
+        "born": "1.12.1959",
+        "died": "9.11.2001",
+        "died_at": "Smolenice"
       }
     },
     {
@@ -157,7 +169,11 @@
         "name": "Emila",
         "surname":"Minulá (Kováčová) ",
         "job":"žena v domácnosti",
-        "gender": "female"
+        "gender": "female",
+        "born_at": "Smolenice",
+        "born": "20.2.1964",
+        "died": "",
+        "died_at": ""
       }
     },
     {
@@ -186,7 +202,11 @@
         "name": "Lucka",
         "surname":"Minulá (Poláková) ",
         "job":"Kaderníčka",
-        "gender": "female"
+        "gender": "female",
+        "born_at": "Trnava",
+        "born": "7.7.1977",
+        "died": "",
+        "died_at": ""
       }
     }
   ]
