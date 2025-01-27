@@ -159,17 +159,11 @@ const FamilyTree = () => {
     });
     g.on('node:mousedown', ({ e, node }) => {
       console.log("mousedown")
-<<<<<<< Updated upstream
-      isDragging = true;
-      draggingNode = node;
-      startPosition = { x: e.clientX, y: e.clientY };
-=======
       if (e.button === 0) { // Left mouse button
         isDragging = true;
         draggingNode = node;
         startPosition = { x: e.clientX, y: e.clientY };
       }
->>>>>>> Stashed changes
     });
 
     g.on('node:mousemove', ({ e }) => {
@@ -213,8 +207,6 @@ const FamilyTree = () => {
       isPanning = false;
       startPoint = null;
     });
-<<<<<<< Updated upstream
-=======
     
 
     g.on('node:click', ({ node }) => {
@@ -231,7 +223,6 @@ const FamilyTree = () => {
       setSelectedNode(node.getData());
 
     });
->>>>>>> Stashed changes
 
     g.on('node:button-plus:click', ({ node }) => {
       console.log('button-plus:click')
