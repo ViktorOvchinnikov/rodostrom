@@ -119,7 +119,7 @@ const FamilyTree = () => {
       container: containerRef.current,
       autoResize: true,
       background: {
-        color: '#edf0f4',
+        color: '#e3d0b6',
       },
       grid: {
         size: 10,
@@ -365,7 +365,7 @@ const FamilyTree = () => {
 
         <div id="container" className="family-tree-container">
         <div className="zoom-controls">
-          <button className="zoom-button" onClick={handleZoomIn}><img src="/zoomin.png" alt="+" /></button>
+          <button className="zoom-button" onClick={handleZoomIn}><img src="zoomin.png" alt="+" /></button>
           <button className="zoom-button" onClick={handleZoomOut}><img src="/zoomout.png" alt="-" /></button>
           {/* <button onClick={toggleAddingEdge} className={isAddingEdge ? 'active' : ''}>
           {isAddingEdge ? 'Zrušiť' : 'Pridanie prepojenia medzi príbuznými'}
