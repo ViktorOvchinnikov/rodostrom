@@ -1,53 +1,53 @@
-/*!* FamilyTree.css *!*/
-.family-tree-container-wrapper {
-  display: flex;
-  height: 100%; /* Full height of the section */
-  width: 100%;
-}
+/*!*!* FamilyTree.css *!*!*/
+/*.family-tree-container-wrapper {*/
+/*  display: flex;*/
+/*  height: 100%; !* Full height of the section *!*/
+/*  width: 100%;*/
+/*}*/
 
-.family-tree-container {
-  flex: 1; /* Allow graph to take up remaining space */
-  height: 550px; /* Fixed height to prevent scrolling */
-  border-radius: 15px;
-  margin: 1em 0;
-  overflow: hidden; /* Prevent scrolling inside the graph container */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+/*.family-tree-container {*/
+/*  flex: 1; !* Allow graph to take up remaining space *!*/
+/*  height: 550px; !* Fixed height to prevent scrolling *!*/
+/*  border-radius: 15px;*/
+/*  margin: 1em 0;*/
+/*  overflow: hidden; !* Prevent scrolling inside the graph container *!*/
+/*  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+/*}*/
 
-.node-info-panel {
-  width: 250px; /* Fixed width for info panel */
-  flex-shrink: 0; /* Prevent the panel from resizing */
-  background-color: #f8f8f8;
-  padding: 1em;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-  overflow-y: auto; /* Allow scrolling for content inside the panel */
-  display: flex;
-  flex-direction: column;
-}
+/*.node-info-panel {*/
+/*  width: 250px; !* Fixed width for info panel *!*/
+/*  flex-shrink: 0; !* Prevent the panel from resizing *!*/
+/*  background-color: #f8f8f8;*/
+/*  padding: 1em;*/
+/*  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);*/
+/*  overflow-y: auto; !* Allow scrolling for content inside the panel *!*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*}*/
 
-.node-info-panel strong {
-  text-align: left;
-  display: block;
-  margin-top: 2px; /* Add spacing below each label */
-}
+/*.node-info-panel strong {*/
+/*  text-align: left;*/
+/*  display: block;*/
+/*  margin-top: 2px; !* Add spacing below each label *!*/
+/*}*/
 
-.node-info-panel input {
-  width: calc(100% - 1em); /* Slightly narrower than the panel for aesthetics */
-  height: 30px;
-  margin-bottom: 2px; /* Reduce spacing between input fields */
-  border: 1px solid #d9dad7;
-  border-radius: 5px;
-  font-size: 0.9em;
-}
+/*.node-info-panel input {*/
+/*  width: calc(100% - 1em); !* Slightly narrower than the panel for aesthetics *!*/
+/*  height: 30px;*/
+/*  margin-bottom: 2px; !* Reduce spacing between input fields *!*/
+/*  border: 1px solid #d9dad7;*/
+/*  border-radius: 5px;*/
+/*  font-size: 0.9em;*/
+/*}*/
 
 
-.node-info-panel button {
-  padding: 0.5em 1em;
-  border-radius: 5px;
-  font-size: 0.9em;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+/*.node-info-panel button {*/
+/*  padding: 0.5em 1em;*/
+/*  border-radius: 5px;*/
+/*  font-size: 0.9em;*/
+/*  cursor: pointer;*/
+/*  transition: background-color 0.3s ease;*/
+/*}*/
 
 /* Pridať predka button styling */
 .node-info-panel .add-button0 {
@@ -58,21 +58,21 @@
   color: #2e7d32;
 }
 
-.node-info-panel .add-button0:hover {
-  background-color: #a7e8ab;
-}
+/*.node-info-panel .add-button0:hover {*/
+/*  background-color: #a7e8ab;*/
+/*}*/
 
 /* Upraviť informácie button styling */
 .node-info-panel .edit-button {
   background-color: #a7d8f0;
   border: 2px solid #4793c2;
-  width: 120px;
+  width: 110px;
   color: #1a5679;
 }
 
-.node-info-panel .edit-button:hover {
-  background-color: #95cce4;
-}
+/*.node-info-panel .edit-button:hover {*/
+/*  background-color: #95cce4;*/
+/*}*/
 
 /* Uložiť button styling */
 .node-info-panel .save-button {
@@ -92,8 +92,84 @@
   color: #7d2e2e;
 }
 
-.node-info-panel .delete-button:hover {
-  background-color: #e8a7a7;
+/*.node-info-panel .delete-button:hover {*/
+/*  background-color: #e8a7a7;*/
+/*}*/
+
+/*.family-tree-section {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: center;*/
+/*  margin: 1em auto;*/
+/*  padding: 0em;*/
+/*  background-color: #edf0f4;*/
+/*  border-radius: 20px;*/
+/*  text-align: center;*/
+/*  width: 90%;*/
+/*}*/
+
+/*.form-area,*/
+/*.results-area,*/
+/*.graph-area {*/
+/*  padding: 1em 2em;*/
+/*  border-radius: 15px;*/
+/*  margin: 2em auto;*/
+/*  max-width: 800px; !* Nastavenie šírky *!*/
+/*  background-color: #fdf7f1; !* Zjednotenie farby pozadia *!*/
+/*  border: 1px solid #a89f91; !* Usporiadanie hrán formulára *!*/
+/*}*/
+
+/*.graph-area {*/
+/*  height: 550px;*/
+/*}*/
+
+/*h2 {*/
+/*  font-size: 1.5em;*/
+/*  color: #29323d;*/
+/*}*/
+
+/*.node-dragging {*/
+/*  cursor: grabbing;*/
+/*}*/
+
+* {
+    box-sizing: border-box;
+}
+
+.family-tree-container-wrapper {
+  display: flex;
+  /*height: 100%; !* Full height of the section *!*!*/
+  width: 100%;
+  background-color: #f6efe3; /* Matches the main section background */
+  border: 1px solid #a89f91;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  height: auto; /* Adjust height dynamically */
+  padding: 1em; /* Add padding for better visual spacing */
+}
+
+.family-tree-container {
+  flex: 1;
+  height: 550px; /* Fixed height to prevent scrolling */
+  /*background-color: #fdf7f1;*/
+  background-color: #fdf7f1;
+  border-radius: 15px;
+  /*border: 1px solid #a89f91;*/
+  border: 1px solid #b8a18a; /* Match section styling */
+  margin: 1em;
+  overflow: hidden; /* Prevent scrolling inside the graph container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.node-info-panel {
+  width: 200px;
+  flex-shrink: 0; /* Prevent the panel from resizing */
+  background-color: #fdf7f1;
+  padding: 1em;
+  border-radius: 15px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #a89f91;
 }
 
 .family-tree-section {
@@ -102,7 +178,7 @@
   align-items: center;
   margin: 1em auto;
   padding: 0em;
-  background-color: #edf0f4;
+  background-color: #fdf7f1;
   border-radius: 20px;
   text-align: center;
   width: 90%;
@@ -113,21 +189,45 @@
 .graph-area {
   padding: 1em 2em;
   border-radius: 15px;
-  margin: 2em auto;
-  max-width: 800px; /* Nastavenie šírky */
+  margin: 0 auto;
+  max-width: 90%; /* Nastavenie šírky */
   background-color: #fdf7f1; /* Zjednotenie farby pozadia */
-  border: 1px solid #a89f91; /* Usporiadanie hrán formulára */
+  border: 1px solid #a89f91; /* Usporiadanie hrán formulára *!*/
+  width: 100%;
 }
 
 .graph-area {
-  height: 550px;
+  /*height: 550px;*/
+  padding: 1em 2em;
+  border-radius: 15px;
+  margin: 2em auto;
+  max-width: 90%; /* Width adjustment */
+  background-color: #faf4eb; /* Matches design */
+  border: 1px solid #a89f91;
 }
 
 h2 {
-  font-size: 1.5em;
+  font-size: 2.0em;
   color: #29323d;
 }
 
 .node-dragging {
   cursor: grabbing;
+}
+
+.zoom-controls button {
+  background-color: #b8987e; /* Matches overall theme */
+  border: 1px solid #a89f91;
+  color: #ffffff;
+  border-radius: 8px; /* Slightly rounded corners for better aesthetics */
+  padding: 0.6em 1.0em; /* Increased padding for size */
+  font-size: 1.0em; /* Larger text */
+  margin: 0.5em; /* Add some spacing around the buttons */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effects */
+}
+
+.zoom-controls button:hover {
+  background-color: #a17c62; /* Darker background for hover */
+  transform: scale(1.1); /* Slight enlargement on hover */
 }

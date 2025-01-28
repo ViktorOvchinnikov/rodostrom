@@ -123,15 +123,182 @@ input[type="submit"]:active {
 /*    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
 /*}*/
 
+/*.tree-node {*/
+/*    background-color: #e9dac3;*/
+/*    border-radius: 10px;*/
+/*    padding: 1em;*/
+/*    text-align: center;*/
+/*    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
+/*    margin: 1em;*/
+/*    font-size: 1.1em;*/
+/*    color: #5a4635;*/
+/*}*/
+
+/*.tree-node:hover {*/
+/*    background-color: #cbb59e;*/
+/*    color: white;*/
+/*}*/
+
+/*.tree-controls button {*/
+/*    background-color: #b8987e;*/
+/*    border: none;*/
+/*    padding: 0.5em 1em;*/
+/*    border-radius: 5px;*/
+/*    color: white;*/
+/*    cursor: pointer;*/
+/*    transition: background-color 0.3s;*/
+/*}*/
+
+/*.tree-controls button:hover {*/
+/*    background-color: #a17c62;*/
+/*}*/
+
+/*.form-area {*/
+/*    padding: 1em 2em;*/
+/*    border-radius: 15px;*/
+/*    margin: 2em auto;*/
+/*    max-width: 800px; !* Nastavenie šírky *!*/
+/*    background-color: #fdf7f1; !* Zjednotenie farby pozadia *!*/
+/*    border: 1px solid #a89f91; !* Usporiadanie hrán formulára *!*!*/
+/*}*/
+
+/*.results-area {*/
+/*    margin: 1em;*/
+/*    padding: 1em;*/
+/*    border-radius: 10px;*/
+/*    background-color: #f9f4ee;*/
+/*}*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lora', serif;
+    background-color: #fdf7f1;
+    color: #5a4635;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+  border-bottom: 2px solid #a89f91;
+  text-align: center;
+  height: 110px;
+  box-sizing: border-box;
+  background-color: #f6efe3;
+  font-family: 'Great Vibes', cursive;
+  font-size: 30px;
+  color: #5a4635;
+  line-height: 20px;
+  padding-top: 10px; /* Odstrániť extra priestor */
+}
+
+section {
+  /*background-color: #fdf7f1;*/
+  background-color: #faf4eb;
+  margin: 2em auto;
+  padding: 2em;
+  max-width: 1500px;
+  border-radius: 20px;
+  /*border: 1px solid #a89f91;*/
+  border: 1px solid #b8a18a;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+#main_section {
+    background-color: #f6efe3;
+    padding: 2em;
+    border-radius: 15px;
+    border: 1px solid #a89f91;
+}
+
+h1 {
+    color: #5a4635;
+    text-align: center;
+    font-size: 2.5em;
+    margin: 0.5em 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #e3d0b6;
+    padding: 1em 0;
+    border-bottom: 2px solid #a89f91;
+}
+
+nav a {
+    text-decoration: none;
+    font-size: 2.0em;
+    font-weight: bold;
+    color: #5a4635;
+    padding: 0.5em 1em;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav a.active {
+    background-color: #c8a17a; /* Slightly lighter highlight color */
+    color: white; /* Make text stand out more */
+}
+
+nav a:hover {
+    background-color: #cbb59e;
+    color: #fff;
+    border-radius: 5px;
+}
+
+input, select {
+    border: 1px solid #a89f91;
+    border-radius: 8px;
+    height: 30px;
+    width: 100%;
+    margin: 10px 0;
+    padding: 0 10px;
+    max-width: 100%; /* Prevencia presahov */
+    box-sizing: border-box; /* Správne spracovanie paddingu */
+}
+
+input[type="submit"] {
+    /*background-color: #b8987e;*/
+    background-color: #ff6d4c;
+    color: white;
+    border: none;
+    height: 40px;
+    width: auto;
+    /*padding: 0 20px;*/
+    padding: 0.5em 2em; /* Väčšie tlačidlo pre lepšiu viditeľnosť */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: auto;
+    display: block;
+    position: relative;
+    right: 0;
+    font-size: 1em;
+}
+
+input[type="submit"]:hover {
+    background-color: #ff6d5c; /* Softer hover transition */
+    transform: scale(1.05); /* Slight enlargement */
+}
+
+fieldset {
+  margin: 0 1em;
+  padding: 1em;
+  border-radius: 10px;
+}
+
 .tree-node {
     background-color: #e9dac3;
     border-radius: 10px;
-    padding: 1em;
+    padding: 1.2em;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 1em;
-    font-size: 1.1em;
-    color: #5a4635;
+    margin: 1.5em;
+    font-size: 1.2em;
+    /*color: #5a4635;*/
+    color: #4a3b30;
 }
 
 .tree-node:hover {
@@ -149,24 +316,27 @@ input[type="submit"]:active {
     transition: background-color 0.3s;
 }
 
-.tree-controls button:hover {
-    background-color: #a17c62;
-}
+/*.tree-controls button:hover {*/
+/*    background-color: #a17c62;*/
+/*}*/
 
 .form-area {
     padding: 1em 2em;
     border-radius: 15px;
-    margin: 2em auto;
-    max-width: 800px; /* Nastavenie šírky */
+    margin: 0 auto;
+    max-width: 90%; /* Nastavenie šírky */
     background-color: #fdf7f1; /* Zjednotenie farby pozadia */
     border: 1px solid #a89f91; /* Usporiadanie hrán formulára *!*/
+    width: 100%;
 }
 
 .results-area {
-    margin: 1em;
+    margin: 1em auto;
     padding: 1em;
     border-radius: 10px;
     background-color: #f9f4ee;
+    max-width: 90%; /* Make it responsive */
+    box-sizing: border-box;
 }
 
 .loading {
@@ -226,17 +396,46 @@ input[type="submit"]:active {
   border-radius: 5px;
 }
 
+/*.zoom-button {*/
+/*    width: 30px; */
+/*    height: 30px;*/
+/*    padding: 0;*/
+/*    background: none;*/
+/*    display: inline-block;*/
+/*    cursor: pointer; */
+/*}*/
 .zoom-button {
-    width: 30px; 
-    height: 30px;
+    width: 40px;  /* zväčšiť podľa potreby */
+    height: 40px;
     padding: 0;
     background: none;
-    display: inline-block;
-    cursor: pointer; 
+    display: inline-flex;   /* Flexbox na centrovanie */
+    justify-content: center;  /* Centrovanie horizontálne */
+    align-items: center;  /* Centrovanie vertikálne */
+    border: none;  /* Odstrániť okraje ak sú */
+    cursor: pointer;
+
 }
 
+
 .zoom-button img {
-    width: 100%; 
-    height: 100%; 
-    object-fit: contain; 
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    /*border: 1px solid red;*/
+
 }
+
+/*.zoom-button img {*/
+/*    width: 70%;  !* Zmenšiť ak sú obrázky príliš veľké *!*/
+/*    height: 70%;*/
+/*    object-fit: contain;*/
+/*}*/
+
+/*.zoom-controls {*/
+/*    display: flex;*/
+/*    flex-direction: column; !* Aby boli tlačidlá pod sebou *!*/
+/*    justify-content: center; !* Centrovanie vertikálne *!*/
+/*    align-items: center; !* Centrovanie horizontálne *!*/
+/*    height: 100%; !* Aby pokrývalo celý rodičovský kontajner *!*/
+/*}*/
